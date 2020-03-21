@@ -1,0 +1,16 @@
+[
+{
+  "modid": "tiamatblocks",
+  "name": "Tiamat Blocks",
+  "description": "Add custom blocks",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["Laike_Endaril"],
+  "credits": "",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
