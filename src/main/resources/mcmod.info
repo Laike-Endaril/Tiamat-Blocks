@@ -2,7 +2,7 @@
 {
   "modid": "tiamatblocks",
   "name": "Tiamat Blocks",
-  "description": "Add custom blocks",
+  "description": "Add custom blocks to the game",
   "version": "${version}",
   "mcversion": "${mcversion}",
   "url": "",
