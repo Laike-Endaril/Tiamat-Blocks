@@ -1,5 +1,5 @@
 {
-    "parent": "stairs",
+    "forge_marker": 1,
     "defaults": {
         "textures": {
             "top": "tiamatblocks:blocks/test",

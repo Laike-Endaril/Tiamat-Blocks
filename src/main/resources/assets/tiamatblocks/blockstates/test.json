@@ -9,11 +9,6 @@
         ],
         "inventory": [
             {}
-        ],
-        "testchannel=test": [
-            {
-                "model": "tiamatblocks:test2"
-            }
         ]
     }
 }
