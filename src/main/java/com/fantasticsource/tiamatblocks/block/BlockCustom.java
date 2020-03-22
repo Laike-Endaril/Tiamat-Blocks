@@ -29,6 +29,7 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 import static com.fantasticsource.tiamatblocks.TiamatBlocks.MODID;
 
@@ -85,6 +86,15 @@ public class BlockCustom extends Block
     @SubscribeEvent
     public static void blockRegistry(RegistryEvent.Register<Block> event)
     {
+        ReflectionTool.set(BlockStateContainer.class, new String[]{"field_185921_a", "NAME_PATTERN"}, null, Pattern.compile("^.*$"));
+        while (!((Pattern) ReflectionTool.get(BlockStateContainer.class, new String[]{"field_185921_a", "NAME_PATTERN"}, null)).pattern().equals("^.*$"))
+        {
+        }
+        long goal = System.currentTimeMillis() + 100;
+        while (System.currentTimeMillis() < goal)
+        {
+        }
+
         IForgeRegistry<Block> registry = event.getRegistry();
 
         File dir = new File(MCTools.getConfigDir() + MODID + File.separator + "blocks");
@@ -134,7 +144,7 @@ public class BlockCustom extends Block
             String line = reader.readLine();
             while (line != null)
             {
-                String[] tokens = Tools.fixedSplit(line, ":");
+                String[] tokens = Tools.fixedSplit(line, ";");
                 switch (tokens[0].toLowerCase())
                 {
                     //Vanilla block traits
