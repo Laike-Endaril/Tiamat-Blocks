@@ -1,10 +1,6 @@
 {
     "parent": "tiamatblocks:block/parent_arches",
     "textures": {
-        "texture": "tiamatblocks:blocks/test",
-        "edge": "tiamatblocks:blocks/test",
-        "side": "tiamatblocks:blocks/test",
-        "0": "tiamatblocks:blocks/test",
-        "side_alt": "tiamatblocks:blocks/test"
+        "all": "tiamatblocks:blocks/test"
     }
 }

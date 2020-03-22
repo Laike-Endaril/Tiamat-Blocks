@@ -1,5 +1,8 @@
 {
     "defaults": {
+        "textures": {
+            "all": "tiamatblocks:blocks/test"
+        },
         "uvlock": true
     },
     "variants": {
