@@ -6,7 +6,7 @@
             "bottom": "tiamatblocks:blocks/test",
             "side": "tiamatblocks:blocks/test"
         },
-        "model": "tiamatblocks:test_stairs",
+        "model": "stairs",
         "uvlock": true
     },
     "variants": {
