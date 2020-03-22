@@ -4,7 +4,6 @@ import com.fantasticsource.mctools.MCTools;
 import com.fantasticsource.tiamatblocks.Names;
 import com.fantasticsource.tools.Tools;
 import net.minecraft.block.Block;
-import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
@@ -34,35 +33,15 @@ public class BlockCustom extends Block
     protected final String shortName;
     protected final ArrayList<String> stairSets = new ArrayList<>();
 
-    protected BlockCustom(String name, Material material, SoundType soundType, ArrayList<String> stairSets)
+    protected BlockCustom(String name, Material material)
     {
         super(material, material.getMaterialMapColor());
-        setSoundType(soundType);
 
         this.shortName = name;
         setRegistryName(name);
         setUnlocalizedName(MODID + ":" + name);
 
         BLOCKS.put(name, this);
-
-
-        this.stairSets.addAll(stairSets);
-
-
-//        enableStats = true;
-//        blockParticleGravity = 1;
-//        slipperiness = 0.6f;
-
-//        fullBlock = getDefaultState().isOpaqueCube();
-
-//        lightValue = 0;
-//        lightOpacity = fullBlock ? 255 : 0;
-//        translucent = !material.blocksLight();
-
-
-//        setResistance(0);
-//        setHardness(0);
-//        setBlockUnbreakable();
     }
 
     @SubscribeEvent
@@ -83,7 +62,10 @@ public class BlockCustom extends Block
                     if (block != null)
                     {
                         registry.register(block);
-                        for (String stairSetName : block.stairSets) registry.register(new BlockCustomStairs(block, stairSetName));
+                        for (String stairSetName : block.stairSets)
+                        {
+                            registry.register(new BlockCustomStairs(block, stairSetName).copyProperties(block));
+                        }
                     }
                 }
             }
@@ -98,34 +80,91 @@ public class BlockCustom extends Block
             BufferedReader reader = new BufferedReader(new FileReader(file));
 
 
-
+            //Required inputs
             Material material = Names.MATERIALS.get(reader.readLine().toUpperCase());
             if (material == null) return null;
 
-            SoundType soundType = Names.SOUND_TYPES.get(reader.readLine().toUpperCase());
-            if (soundType == null) return null;
 
-            ArrayList<String> stairSets = new ArrayList<>();
+            //Name (from filename)
+            String name = file.getName();
+            int index = name.indexOf(".");
+            if (index != -1) name = name.substring(0, index);
+            BlockCustom block = new BlockCustom(name, material);
+
+
+            //Optional inputs
             String line = reader.readLine();
             while (line != null)
             {
                 String[] tokens = Tools.fixedSplit(line, ":");
                 if (tokens.length == 2)
                 {
-                    if (tokens[0].toLowerCase().equals("stairs")) stairSets.add(tokens[1]);
+                    switch (tokens[0].toLowerCase())
+                    {
+                        //Vanilla block traits
+                        case "fullblock":
+                            block.fullBlock = Boolean.parseBoolean(tokens[1]);
+                            break;
+
+                        case "opacity":
+                            block.lightOpacity = Integer.parseInt(tokens[1]);
+                            break;
+
+                        case "translucent":
+                            block.translucent = Boolean.parseBoolean(tokens[1]);
+                            break;
+
+                        case "light":
+                            block.lightValue = Integer.parseInt(tokens[1]);
+                            break;
+
+                        case "useneighborbrightness":
+                            block.useNeighborBrightness = Boolean.parseBoolean(tokens[1]);
+                            break;
+
+                        case "hardness":
+                            block.blockHardness = Float.parseFloat(tokens[1]);
+                            break;
+
+                        case "resistance":
+                            block.blockResistance = Float.parseFloat(tokens[1]);
+                            break;
+
+                        case "stats":
+                            block.enableStats = Boolean.parseBoolean(tokens[1]);
+                            break;
+
+                        case "randomtick":
+                            block.needsRandomTick = Boolean.parseBoolean(tokens[1]);
+                            break;
+
+                        case "sounds":
+                            block.setSoundType(Names.SOUND_TYPES.get(tokens[1].toUpperCase()));
+                            break;
+
+                        case "particlegravity":
+                            block.blockParticleGravity = Float.parseFloat(tokens[1]);
+                            break;
+
+                        case "slip":
+                            block.slipperiness = Float.parseFloat(tokens[1]);
+                            break;
+
+
+                        //Blockstate loading arguments
+                        case "stairs":
+                            block.stairSets.add(tokens[1]);
+                            break;
+                    }
                 }
 
                 line = reader.readLine();
             }
 
 
-            String name = file.getName();
-            int index = name.indexOf(".");
-            if (index != -1) name = name.substring(0, index);
-
-
+            //Return
             reader.close();
-            return new BlockCustom(name, material, soundType, stairSets);
+            return block;
         }
         catch (IOException e)
         {
