@@ -1,5 +1,11 @@
 {
     "variants": {
+        "inventory": {
+            "model": "tiamatblocks:test_arches",
+            "y": 270,
+            "x": 180,
+            "uvlock": true
+        },
         "facing=east,half=bottom,shape=straight": {
             "model": "tiamatblocks:test_arches",
             "y": 270,
@@ -14,7 +20,6 @@
         },
         "facing=south,half=bottom,shape=straight": {
             "model": "tiamatblocks:test_arches",
-            "y": 0,
             "x": 180,
             "uvlock": true
         },
@@ -113,7 +118,6 @@
         },
         "facing=north,half=top,shape=straight": {
             "model": "tiamatblocks:test_arches",
-            "y": 0,
             "uvlock": true
         }
     }

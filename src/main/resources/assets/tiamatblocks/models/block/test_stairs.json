@@ -1,0 +1,8 @@
+{
+    "parent": "block/stairs",
+    "textures": {
+        "top": "tiamatblocks:blocks/test",
+        "bottom": "tiamatblocks:blocks/test",
+        "side": "tiamatblocks:blocks/test"
+    }
+}
