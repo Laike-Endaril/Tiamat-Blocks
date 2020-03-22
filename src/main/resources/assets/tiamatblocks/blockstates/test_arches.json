@@ -1,165 +1,162 @@
 {
+    "forge_marker": 1,
     "defaults": {
+        "textures": {
+            "all": "tiamatblocks:blocks/test"
+        },
+        "model": "tiamatblocks:parent_arches",
         "uvlock": true
     },
     "variants": {
         "inventory": {
-            "model": "tiamatblocks:test_arches",
             "x": 180,
             "y": 270
         },
         "facing=east,half=bottom,shape=straight": {
-            "model": "tiamatblocks:test_arches",
             "x": 180,
             "y": 270
         },
         "facing=west,half=bottom,shape=straight": {
-            "model": "tiamatblocks:test_arches",
             "x": 180,
             "y": 90
         },
         "facing=south,half=bottom,shape=straight": {
-            "model": "tiamatblocks:test_arches",
             "x": 180
         },
         "facing=north,half=bottom,shape=straight": {
-            "model": "tiamatblocks:test_arches",
             "x": 180,
             "y": 180
         },
         "facing=east,half=bottom,shape=outer_right": {
-            "model": "block"
+            "model": "cube_all"
         },
         "facing=west,half=bottom,shape=outer_right": {
-            "model": "block",
+            "model": "cube_all",
             "y": 180
         },
         "facing=south,half=bottom,shape=outer_right": {
-            "model": "block",
+            "model": "cube_all",
             "y": 90
         },
         "facing=north,half=bottom,shape=outer_right": {
-            "model": "block",
+            "model": "cube_all",
             "y": 270
         },
         "facing=east,half=bottom,shape=outer_left": {
-            "model": "block",
+            "model": "cube_all",
             "y": 270
         },
         "facing=west,half=bottom,shape=outer_left": {
-            "model": "block",
+            "model": "cube_all",
             "y": 90
         },
         "facing=south,half=bottom,shape=outer_left": {
-            "model": "block"
+            "model": "cube_all"
         },
         "facing=north,half=bottom,shape=outer_left": {
-            "model": "block",
+            "model": "cube_all",
             "y": 180
         },
         "facing=east,half=bottom,shape=inner_right": {
-            "model": "block"
+            "model": "cube_all"
         },
         "facing=west,half=bottom,shape=inner_right": {
-            "model": "block",
+            "model": "cube_all",
             "y": 180
         },
         "facing=south,half=bottom,shape=inner_right": {
-            "model": "block",
+            "model": "cube_all",
             "y": 90
         },
         "facing=north,half=bottom,shape=inner_right": {
-            "model": "block",
+            "model": "cube_all",
             "y": 270
         },
         "facing=east,half=bottom,shape=inner_left": {
-            "model": "block",
+            "model": "cube_all",
             "y": 270
         },
         "facing=west,half=bottom,shape=inner_left": {
-            "model": "block",
+            "model": "cube_all",
             "y": 90
         },
         "facing=south,half=bottom,shape=inner_left": {
-            "model": "block"
+            "model": "cube_all"
         },
         "facing=north,half=bottom,shape=inner_left": {
-            "model": "block",
+            "model": "cube_all",
             "y": 180
         },
         "facing=east,half=top,shape=straight": {
-            "model": "tiamatblocks:test_arches",
             "y": 90
         },
         "facing=west,half=top,shape=straight": {
-            "model": "tiamatblocks:test_arches",
             "y": 270
         },
         "facing=south,half=top,shape=straight": {
-            "model": "tiamatblocks:test_arches",
             "y": 180
         },
-        "facing=north,half=top,shape=straight": {
-            "model": "tiamatblocks:test_arches"
-        },
+        "facing=north,half=top,shape=straight": [
+            {}
+        ],
         "facing=east,half=top,shape=outer_right": {
-            "model": "block"
+            "model": "cube_all"
         },
         "facing=west,half=top,shape=outer_right": {
-            "model": "block",
+            "model": "cube_all",
             "y": 180
         },
         "facing=south,half=top,shape=outer_right": {
-            "model": "block",
+            "model": "cube_all",
             "y": 90
         },
         "facing=north,half=top,shape=outer_right": {
-            "model": "block",
+            "model": "cube_all",
             "y": 270
         },
         "facing=east,half=top,shape=outer_left": {
-            "model": "block",
+            "model": "cube_all",
             "y": 270
         },
         "facing=west,half=top,shape=outer_left": {
-            "model": "block",
+            "model": "cube_all",
             "y": 90
         },
         "facing=south,half=top,shape=outer_left": {
-            "model": "block"
+            "model": "cube_all"
         },
         "facing=north,half=top,shape=outer_left": {
-            "model": "block",
+            "model": "cube_all",
             "y": 180
         },
         "facing=east,half=top,shape=inner_right": {
-            "model": "block"
+            "model": "cube_all"
         },
         "facing=west,half=top,shape=inner_right": {
-            "model": "block",
+            "model": "cube_all",
             "y": 180
         },
         "facing=south,half=top,shape=inner_right": {
-            "model": "block",
+            "model": "cube_all",
             "y": 90
         },
         "facing=north,half=top,shape=inner_right": {
-            "model": "block",
+            "model": "cube_all",
             "y": 270
         },
         "facing=east,half=top,shape=inner_left": {
-            "model": "block",
+            "model": "cube_all",
             "y": 270
         },
         "facing=west,half=top,shape=inner_left": {
-            "model": "block",
+            "model": "cube_all",
             "y": 90
         },
         "facing=south,half=top,shape=inner_left": {
-            "model": "block"
+            "model": "cube_all"
         },
         "facing=north,half=top,shape=inner_left": {
-            "model": "block",
+            "model": "cube_all",
             "y": 180
         }
     }

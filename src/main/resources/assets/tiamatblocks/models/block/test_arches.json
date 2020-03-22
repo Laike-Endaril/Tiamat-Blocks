@@ -1,6 +1,0 @@
-{
-    "parent": "tiamatblocks:block/parent_arches",
-    "textures": {
-        "all": "tiamatblocks:blocks/test"
-    }
-}
