@@ -1,10 +1,7 @@
 {
     "forge_marker": 1,
     "defaults": {
-        "model": "cube_all",
-        "textures": {
-            "all": "tiamatblocks:blocks/test"
-        }
+        "model": "tiamatblocks:test"
     },
     "variants": {
         "normal": [
@@ -13,12 +10,10 @@
         "inventory": [
             {}
         ],
-        "testchannel": {
-            "tiamatblocks:blocks/test2": {
-                "textures": {
-                    "all": "#testchannel"
-                }
+        "testchannel=test": [
+            {
+                "model": "tiamatblocks:test2"
             }
-        }
+        ]
     }
 }
