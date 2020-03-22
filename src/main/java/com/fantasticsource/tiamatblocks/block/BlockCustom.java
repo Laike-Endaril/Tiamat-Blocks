@@ -5,6 +5,7 @@ import com.fantasticsource.tiamatblocks.Names;
 import com.fantasticsource.tools.Tools;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
@@ -31,6 +32,7 @@ public class BlockCustom extends Block
     public static final LinkedHashMap<String, ItemBlockCustom> BLOCK_ITEMS = new LinkedHashMap<>();
 
     protected final String shortName;
+    protected boolean cullNeighbors = true;
     protected final ArrayList<String> stairSets = new ArrayList<>();
 
     protected BlockCustom(String name, Material material)
@@ -43,6 +45,13 @@ public class BlockCustom extends Block
 
         BLOCKS.put(name, this);
     }
+
+    @Override
+    public boolean isOpaqueCube(IBlockState state)
+    {
+        return cullNeighbors;
+    }
+
 
     @SubscribeEvent
     public static void blockRegistry(RegistryEvent.Register<Block> event)
@@ -101,7 +110,7 @@ public class BlockCustom extends Block
                 {
                     switch (tokens[0].toLowerCase())
                     {
-                        //Vanilla block traits
+                        //Vanilla block properties
                         case "fullblock":
                             block.fullBlock = Boolean.parseBoolean(tokens[1]);
                             break;
@@ -148,6 +157,12 @@ public class BlockCustom extends Block
 
                         case "slip":
                             block.slipperiness = Float.parseFloat(tokens[1]);
+                            break;
+
+
+                        //Custom block properties
+                        case "cullneighbors":
+                            block.cullNeighbors = Boolean.parseBoolean(tokens[1]);
                             break;
 
 
