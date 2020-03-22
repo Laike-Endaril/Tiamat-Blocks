@@ -2,16 +2,24 @@ package com.fantasticsource.tiamatblocks;
 
 import com.fantasticsource.tiamatblocks.block.BlockCustom;
 import com.fantasticsource.tiamatblocks.block.ItemBlockCustom;
+import net.minecraft.block.properties.IProperty;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemBlock;
 import net.minecraft.server.MinecraftServer;
+import net.minecraft.util.EnumHand;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Config;
 import net.minecraftforge.common.config.ConfigManager;
+import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.fml.client.event.ConfigChangedEvent;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent;
+import net.minecraftforge.fml.relauncher.Side;
+
+import java.util.Map;
 
 @Mod(modid = TiamatBlocks.MODID, name = TiamatBlocks.NAME, version = TiamatBlocks.VERSION, dependencies = "required-after:fantasticlib@[1.12.2.034a,)")
 public class TiamatBlocks
@@ -41,6 +49,21 @@ public class TiamatBlocks
         for (ItemBlockCustom item : BlockCustom.BLOCK_ITEMS.values())
         {
             server.commandManager.executeCommand(server, "/give " + pName + " " + item.getRegistryName());
+        }
+    }
+
+    @SubscribeEvent
+    public static void test2(PlayerInteractEvent.EntityInteractSpecific event)
+    {
+        if (event.getSide() == Side.CLIENT || event.getHand() == EnumHand.OFF_HAND) return;
+
+        Item item = event.getEntityPlayer().getHeldItemMainhand().getItem();
+        if (item instanceof ItemBlock)
+        {
+            for (Map.Entry<IProperty<?>, Comparable<?>> entry : ((ItemBlock) item).getBlock().getDefaultState().getProperties().entrySet())
+            {
+                System.out.println(entry.getKey().getName() + " = " + entry.getValue());
+            }
         }
     }
 }

@@ -1,11 +1,5 @@
 {
-    "parent": "stairs",
     "defaults": {
-        "textures": {
-            "top": "tiamatblocks:blocks/test",
-            "bottom": "tiamatblocks:blocks/test",
-            "side": "tiamatblocks:blocks/test"
-        },
         "model": "stairs",
         "uvlock": true
     },
