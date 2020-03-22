@@ -1,8 +1,5 @@
 {
     "defaults": {
-        "textures": {
-            "all": "tiamatblocks:blocks/test"
-        },
         "uvlock": true
     },
     "variants": {
@@ -31,7 +28,7 @@
             "y": 180
         },
         "facing=east,half=bottom,shape=outer_right": {
-            "model": "todo:todo"
+            "model": "tiamatblocks:test_arches_outer"
         },
         "facing=west,half=bottom,shape=outer_right": {
             "model": "tiamatblocks:test_arches_outer",
