@@ -9,13 +9,16 @@ import net.minecraftforge.fml.common.FMLCommonHandler;
 import java.io.*;
 import java.util.ArrayList;
 
+import static com.fantasticsource.tiamatblocks.TiamatBlocks.MODID;
+
 public class ResourcePackGenerator
 {
-    protected static final String MAIN_PATH = "assets" + File.separator + "tiamatblocks" + File.separator + "resourcepackfiles" + File.separator;
+    protected static final String MAIN_PATH = "assets" + File.separator + "tiamatblocks" + File.separator + "autogen" + File.separator;
     protected static final String[] FILE_NAMES = new String[]
             {
                     "pack.png",
-                    "pack.mcmeta"
+                    "pack.mcmeta",
+                    "assets" + File.separator + MODID + File.separator + "blockstates" + File.separator + "test.json"
             };
 
 
@@ -32,6 +35,12 @@ public class ResourcePackGenerator
             if (file.exists()) continue;
 
 
+            //Create parent directories
+            file.mkdirs();
+            file.delete();
+
+
+            //Copy file
             try
             {
                 InputStream is = MCTools.getJarResourceStream(TiamatBlocks.class, MAIN_PATH + filename);
