@@ -7,6 +7,7 @@ import com.fantasticsource.tools.Tools;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
@@ -207,6 +208,7 @@ public class BlockCustomLoader extends Block
         {
             ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation(MODID + ":" + item.shortName, "inventory"));
         }
+        Minecraft.getMinecraft().refreshResources();
     }
 
 
