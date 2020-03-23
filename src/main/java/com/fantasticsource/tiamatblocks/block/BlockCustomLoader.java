@@ -164,7 +164,7 @@ public class BlockCustomLoader extends Block
 
                     //Blockstate loading arguments
                     case "add":
-                        String fullName = tokens[1].trim();
+                        String fullName = name + tokens[1].trim();
                         BlockData data = new BlockData(fullName, tokens[2].trim());
                         block.blockDataSet.put(fullName, data);
                         for (int i = 3; i < tokens.length; i += 2)
