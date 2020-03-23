@@ -79,11 +79,11 @@ public class BlockstateGenerator
         switch (data.type)
         {
             case "basic":
-                registry.register(new BlockCustomBasic(block, data.name).copyProperties(block));
+                registry.register(new BlockCustomBasic(block, data.name, data.cullNeighbors).copyProperties(block));
                 break;
 
             case "stairs":
-                registry.register(new BlockCustomStairs(block, data.name).copyProperties(block));
+                registry.register(new BlockCustomStairs(block, data.name, data.cullNeighbors).copyProperties(block));
                 break;
         }
     }

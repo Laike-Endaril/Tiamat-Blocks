@@ -8,13 +8,14 @@ import static com.fantasticsource.tiamatblocks.TiamatBlocks.MODID;
 public class BlockCustomStairs extends BlockStairs
 {
     final String shortName;
-    protected boolean cullNeighbors = true;
+    protected final boolean cullNeighbors;
 
-    public BlockCustomStairs(BlockCustomLoader block, String name)
+    public BlockCustomStairs(BlockCustomLoader block, String name, boolean cullNeighbors)
     {
         super(block.getDefaultState());
 
         shortName = name;
+        this.cullNeighbors = cullNeighbors;
         setRegistryName(shortName);
         setUnlocalizedName(MODID + ":" + shortName);
 
@@ -42,8 +43,6 @@ public class BlockCustomStairs extends BlockStairs
         setSoundType(from.getSoundType());
         blockParticleGravity = from.blockParticleGravity;
         slipperiness = from.slipperiness;
-
-        cullNeighbors = from.cullNeighbors;
 
         return this;
     }

@@ -104,6 +104,8 @@ public class BlockCustomLoader extends Block
             while (line != null)
             {
                 String[] tokens = Tools.fixedSplit(line, ";");
+                String fullName;
+                BlockData data;
                 switch (tokens[0].toLowerCase())
                 {
                     //Vanilla block properties
@@ -164,8 +166,19 @@ public class BlockCustomLoader extends Block
 
                     //Blockstate loading arguments
                     case "add":
-                        String fullName = name + tokens[1].trim();
-                        BlockData data = new BlockData(fullName, tokens[2].trim());
+                        fullName = name + tokens[1].trim();
+                        data = new BlockData(fullName, tokens[2].trim(), false);
+                        block.blockDataSet.put(fullName, data);
+                        for (int i = 3; i < tokens.length; i += 2)
+                        {
+                            data.replacements.put(tokens[i], tokens[i + 1]);
+                        }
+                        break;
+
+                    //Blockstate loading arguments
+                    case "addcull":
+                        fullName = name + tokens[1].trim();
+                        data = new BlockData(fullName, tokens[2].trim(), true);
                         block.blockDataSet.put(fullName, data);
                         for (int i = 3; i < tokens.length; i += 2)
                         {
@@ -216,11 +229,13 @@ public class BlockCustomLoader extends Block
     {
         public String name, type;
         public LinkedHashMap<String, String> replacements = new LinkedHashMap<>();
+        public boolean cullNeighbors;
 
-        public BlockData(String name, String type)
+        public BlockData(String name, String type, boolean cullNeighbors)
         {
             this.name = name;
             this.type = type;
+            this.cullNeighbors = cullNeighbors;
         }
     }
 }
