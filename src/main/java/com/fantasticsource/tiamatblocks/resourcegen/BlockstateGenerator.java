@@ -3,7 +3,7 @@ package com.fantasticsource.tiamatblocks.resourcegen;
 import com.fantasticsource.mctools.MCTools;
 import com.fantasticsource.tiamatblocks.TiamatBlocks;
 import com.fantasticsource.tiamatblocks.block.BlockCustomBasic;
-import com.fantasticsource.tiamatblocks.block.BlockCustomLoader;
+import com.fantasticsource.tiamatblocks.block.CustomBlockLoader;
 import com.fantasticsource.tiamatblocks.block.BlockCustomStairs;
 import com.fantasticsource.tools.Tools;
 import net.minecraft.block.Block;
@@ -25,12 +25,12 @@ public class BlockstateGenerator
                     "stairs"
             };
 
-    public static void generate(BlockCustomLoader block, IForgeRegistry<Block> registry)
+    public static void generate(CustomBlockLoader block, IForgeRegistry<Block> registry)
     {
-        for (BlockCustomLoader.BlockData data : block.blockDataSet.values()) generate(block, data, registry);
+        for (CustomBlockLoader.BlockData data : block.blockDataSet.values()) generate(block, data, registry);
     }
 
-    protected static void generate(BlockCustomLoader block, BlockCustomLoader.BlockData data, IForgeRegistry<Block> registry)
+    protected static void generate(CustomBlockLoader block, CustomBlockLoader.BlockData data, IForgeRegistry<Block> registry)
     {
         if (!Tools.contains(VALID_DATA_TYPES, data.type)) return;
 

@@ -1,6 +1,6 @@
 package com.fantasticsource.tiamatblocks;
 
-import com.fantasticsource.tiamatblocks.block.BlockCustomLoader;
+import com.fantasticsource.tiamatblocks.block.CustomBlockLoader;
 import com.fantasticsource.tiamatblocks.block.ItemBlockCustom;
 import com.fantasticsource.tiamatblocks.resourcegen.ResourcePackGenerator;
 import net.minecraft.server.MinecraftServer;
@@ -37,7 +37,7 @@ public class TiamatBlocks
     public static void preInit(FMLPreInitializationEvent event)
     {
         MinecraftForge.EVENT_BUS.register(TiamatBlocks.class);
-        MinecraftForge.EVENT_BUS.register(BlockCustomLoader.class);
+        MinecraftForge.EVENT_BUS.register(CustomBlockLoader.class);
     }
 
     @SubscribeEvent
@@ -51,7 +51,7 @@ public class TiamatBlocks
     {
         String pName = event.player.getName();
         MinecraftServer server = FMLCommonHandler.instance().getMinecraftServerInstance();
-        for (ItemBlockCustom item : BlockCustomLoader.BLOCK_ITEMS.values())
+        for (ItemBlockCustom item : CustomBlockLoader.BLOCK_ITEMS.values())
         {
             server.commandManager.executeCommand(server, "/give " + pName + " " + item.getRegistryName());
         }

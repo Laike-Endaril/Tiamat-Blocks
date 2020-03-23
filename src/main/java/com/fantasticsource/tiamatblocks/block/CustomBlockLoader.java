@@ -25,7 +25,7 @@ import java.util.LinkedHashMap;
 
 import static com.fantasticsource.tiamatblocks.TiamatBlocks.MODID;
 
-public class BlockCustomLoader extends Block
+public class CustomBlockLoader extends Block
 {
     public static final LinkedHashMap<String, CreativeTabs> CREATIVE_TABS = new LinkedHashMap<>();
 
@@ -37,7 +37,7 @@ public class BlockCustomLoader extends Block
     protected boolean cullNeighbors = true;
     public final LinkedHashMap<String, BlockData> blockDataSet = new LinkedHashMap<>();
 
-    protected BlockCustomLoader(String name, Material material)
+    protected CustomBlockLoader(String name, Material material)
     {
         super(material, material.getMaterialMapColor());
 
@@ -69,7 +69,7 @@ public class BlockCustomLoader extends Block
             {
                 for (File file : files)
                 {
-                    BlockCustomLoader block = loadBlock(file);
+                    CustomBlockLoader block = loadBlock(file);
                     if (block != null)
                     {
                         BlockstateGenerator.generate(block, registry);
@@ -80,7 +80,7 @@ public class BlockCustomLoader extends Block
     }
 
 
-    protected static BlockCustomLoader loadBlock(File file)
+    protected static CustomBlockLoader loadBlock(File file)
     {
         try
         {
@@ -96,7 +96,7 @@ public class BlockCustomLoader extends Block
             String name = file.getName();
             int index = name.indexOf(".");
             if (index != -1) name = name.substring(0, index);
-            BlockCustomLoader block = new BlockCustomLoader(name, material);
+            CustomBlockLoader block = new CustomBlockLoader(name, material);
 
 
             //Optional inputs

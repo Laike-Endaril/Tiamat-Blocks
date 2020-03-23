@@ -17,6 +17,6 @@ public class ItemBlockCustom extends ItemBlock
         setRegistryName(shortName);
         setUnlocalizedName(MODID + ":" + shortName);
 
-        BlockCustomLoader.BLOCK_ITEMS.put(shortName, this);
+        CustomBlockLoader.BLOCK_ITEMS.put(shortName, this);
     }
 }

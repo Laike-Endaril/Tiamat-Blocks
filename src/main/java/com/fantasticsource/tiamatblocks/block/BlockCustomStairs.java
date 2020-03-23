@@ -10,7 +10,7 @@ public class BlockCustomStairs extends BlockStairs
     final String shortName;
     protected final boolean cullNeighbors;
 
-    public BlockCustomStairs(BlockCustomLoader block, String name, boolean cullNeighbors)
+    public BlockCustomStairs(CustomBlockLoader block, String name, boolean cullNeighbors)
     {
         super(block.getDefaultState());
 
@@ -19,7 +19,7 @@ public class BlockCustomStairs extends BlockStairs
         setRegistryName(shortName);
         setUnlocalizedName(MODID + ":" + shortName);
 
-        BlockCustomLoader.BLOCKS.put(shortName, this);
+        CustomBlockLoader.BLOCKS.put(shortName, this);
     }
 
     @Override
@@ -29,7 +29,7 @@ public class BlockCustomStairs extends BlockStairs
     }
 
 
-    public BlockCustomStairs copyProperties(BlockCustomLoader from)
+    public BlockCustomStairs copyProperties(CustomBlockLoader from)
     {
         fullBlock = from.isFullBlock(null);
         lightOpacity = from.getLightOpacity(null);

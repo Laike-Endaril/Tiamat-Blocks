@@ -10,7 +10,7 @@ public class BlockCustomBasic extends Block
     final String shortName;
     protected final boolean cullNeighbors;
 
-    public BlockCustomBasic(BlockCustomLoader block, String name, boolean cullNeighbors)
+    public BlockCustomBasic(CustomBlockLoader block, String name, boolean cullNeighbors)
     {
         super(block.getMaterial(block.getDefaultState()));
 
@@ -19,7 +19,7 @@ public class BlockCustomBasic extends Block
         setRegistryName(shortName);
         setUnlocalizedName(MODID + ":" + shortName);
 
-        BlockCustomLoader.BLOCKS.put(shortName, this);
+        CustomBlockLoader.BLOCKS.put(shortName, this);
     }
 
     @Override
@@ -29,7 +29,7 @@ public class BlockCustomBasic extends Block
     }
 
 
-    public BlockCustomBasic copyProperties(BlockCustomLoader from)
+    public BlockCustomBasic copyProperties(CustomBlockLoader from)
     {
         fullBlock = from.isFullBlock(null);
         lightOpacity = from.getLightOpacity(null);
