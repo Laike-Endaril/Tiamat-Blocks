@@ -2,9 +2,9 @@
     "forge_marker": 1,
     "defaults": {
         "textures": {
-            "top": "tiamatblocks:blocks/test",
-            "bottom": "tiamatblocks:blocks/test",
-            "side": "tiamatblocks:blocks/test"
+            "top": "TOP",
+            "bottom": "BOTTOM",
+            "side": "SIDE"
         },
         "model": "stairs",
         "uvlock": true

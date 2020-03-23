@@ -83,7 +83,7 @@ public class BlockstateGenerator
                 break;
 
             case "stairs":
-                registry.register(new BlockCustomStairs(block, "stairs_" + data.name).copyProperties(block));
+                registry.register(new BlockCustomStairs(block, data.name).copyProperties(block));
                 break;
         }
     }
