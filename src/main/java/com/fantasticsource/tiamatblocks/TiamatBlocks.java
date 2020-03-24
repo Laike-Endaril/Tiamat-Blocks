@@ -1,9 +1,7 @@
 package com.fantasticsource.tiamatblocks;
 
 import com.fantasticsource.tiamatblocks.block.CustomBlockLoader;
-import com.fantasticsource.tiamatblocks.block.ItemBlockCustom;
 import com.fantasticsource.tiamatblocks.resourcegen.ResourcePackGenerator;
-import net.minecraft.server.MinecraftServer;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Config;
 import net.minecraftforge.common.config.ConfigManager;
@@ -13,7 +11,6 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLConstructionEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.common.gameevent.PlayerEvent;
 import net.minecraftforge.fml.relauncher.Side;
 
 @Mod(modid = TiamatBlocks.MODID, name = TiamatBlocks.NAME, version = TiamatBlocks.VERSION, dependencies = "required-after:fantasticlib@[1.12.2.034a,)")
@@ -44,16 +41,5 @@ public class TiamatBlocks
     public static void saveConfig(ConfigChangedEvent.OnConfigChangedEvent event)
     {
         if (event.getModID().equals(MODID)) ConfigManager.sync(MODID, Config.Type.INSTANCE);
-    }
-
-    @SubscribeEvent
-    public static void test(PlayerEvent.PlayerLoggedInEvent event)
-    {
-        String pName = event.player.getName();
-        MinecraftServer server = FMLCommonHandler.instance().getMinecraftServerInstance();
-        for (ItemBlockCustom item : CustomBlockLoader.BLOCK_ITEMS.values())
-        {
-            server.commandManager.executeCommand(server, "/give " + pName + " " + item.getRegistryName());
-        }
     }
 }

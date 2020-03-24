@@ -9,7 +9,6 @@ import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.ModelLoader;
@@ -27,8 +26,6 @@ import static com.fantasticsource.tiamatblocks.TiamatBlocks.MODID;
 
 public class CustomBlockLoader extends Block
 {
-    public static final LinkedHashMap<String, CreativeTabs> CREATIVE_TABS = new LinkedHashMap<>();
-
     public static final LinkedHashMap<String, Block> BLOCKS = new LinkedHashMap<>();
     public static final LinkedHashMap<String, ItemBlockCustom> BLOCK_ITEMS = new LinkedHashMap<>();
 
@@ -169,7 +166,8 @@ public class CustomBlockLoader extends Block
                         fullName = name + tokens[1].trim();
                         data = new BlockData(fullName, tokens[2].trim(), false);
                         block.blockDataSet.put(fullName, data);
-                        for (int i = 3; i < tokens.length; i += 2)
+                        ItemBlockCustom.ITEM_CREATIVE_TABS.put(fullName, Tools.fixedSplit(tokens[3].trim(), ","));
+                        for (int i = 4; i < tokens.length; i += 2)
                         {
                             data.replacements.put(tokens[i], tokens[i + 1]);
                         }
@@ -180,7 +178,8 @@ public class CustomBlockLoader extends Block
                         fullName = name + tokens[1].trim();
                         data = new BlockData(fullName, tokens[2].trim(), true);
                         block.blockDataSet.put(fullName, data);
-                        for (int i = 3; i < tokens.length; i += 2)
+                        ItemBlockCustom.ITEM_CREATIVE_TABS.put(fullName, Tools.fixedSplit(tokens[3].trim(), ","));
+                        for (int i = 4; i < tokens.length; i += 2)
                         {
                             data.replacements.put(tokens[i], tokens[i + 1]);
                         }
