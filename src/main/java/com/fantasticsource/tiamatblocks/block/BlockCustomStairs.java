@@ -33,7 +33,14 @@ public class BlockCustomStairs extends BlockStairs
     {
         fullBlock = from.isFullBlock(null);
         lightOpacity = from.getLightOpacity(null);
-        translucent = from.isTranslucent(null);
+        try
+        {
+            translucent = (boolean) BlockCustomBasic.BLOCK_TRANSLUCENT_FIELD.get(from);
+        }
+        catch (IllegalAccessException e)
+        {
+            e.printStackTrace();
+        }
         lightValue = from.getLightValue(null);
         useNeighborBrightness = from.getUseNeighborBrightness(null);
         blockHardness = from.getBlockHardness(null, null, null);

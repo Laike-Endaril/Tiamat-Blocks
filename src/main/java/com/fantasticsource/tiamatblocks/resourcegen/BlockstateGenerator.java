@@ -3,10 +3,12 @@ package com.fantasticsource.tiamatblocks.resourcegen;
 import com.fantasticsource.mctools.MCTools;
 import com.fantasticsource.tiamatblocks.TiamatBlocks;
 import com.fantasticsource.tiamatblocks.block.BlockCustomBasic;
-import com.fantasticsource.tiamatblocks.block.CustomBlockLoader;
 import com.fantasticsource.tiamatblocks.block.BlockCustomStairs;
+import com.fantasticsource.tiamatblocks.block.CustomBlockLoader;
 import com.fantasticsource.tools.Tools;
 import net.minecraft.block.Block;
+import net.minecraftforge.fml.common.FMLCommonHandler;
+import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.registries.IForgeRegistry;
 
 import java.io.*;
@@ -16,9 +18,7 @@ import static com.fantasticsource.tiamatblocks.TiamatBlocks.MODID;
 
 public class BlockstateGenerator
 {
-    protected static final String
-            INTERNAL_PATH = "assets" + File.separator + MODID + File.separator + "blockstates" + File.separator,
-            EXTERNAL_PATH = MCTools.getResourcePackDir() + "Tiamat Blocks" + File.separator + INTERNAL_PATH;
+    protected static final String INTERNAL_PATH = "assets" + File.separator + MODID + File.separator + "blockstates" + File.separator;
     protected static final String[] VALID_DATA_TYPES = new String[]
             {
                     "basic",
@@ -59,20 +59,23 @@ public class BlockstateGenerator
         }
 
 
-        File file = new File(EXTERNAL_PATH + data.name + ".json");
-        file.mkdirs();
-        file.delete();
-        try
+        if (FMLCommonHandler.instance().getEffectiveSide() == Side.CLIENT)
         {
-            BufferedWriter writer = new BufferedWriter(new FileWriter(file));
+            File file = new File(MCTools.getResourcePackDir() + "Tiamat Blocks" + File.separator + INTERNAL_PATH + data.name + ".json");
+            file.mkdirs();
+            file.delete();
+            try
+            {
+                BufferedWriter writer = new BufferedWriter(new FileWriter(file));
 
-            writer.write(fullString);
+                writer.write(fullString);
 
-            writer.close();
-        }
-        catch (IOException e)
-        {
-            e.printStackTrace();
+                writer.close();
+            }
+            catch (IOException e)
+            {
+                e.printStackTrace();
+            }
         }
 
 

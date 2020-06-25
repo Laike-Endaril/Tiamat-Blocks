@@ -1,12 +1,16 @@
 package com.fantasticsource.tiamatblocks.block;
 
+import com.fantasticsource.tools.ReflectionTool;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
+
+import java.lang.reflect.Field;
 
 import static com.fantasticsource.tiamatblocks.TiamatBlocks.MODID;
 
 public class BlockCustomBasic extends Block
 {
+    public static final Field BLOCK_TRANSLUCENT_FIELD = ReflectionTool.getField(Block.class, "field_149785_s", "translucent");
     final String shortName;
     protected final boolean cullNeighbors;
 
@@ -33,7 +37,14 @@ public class BlockCustomBasic extends Block
     {
         fullBlock = from.isFullBlock(null);
         lightOpacity = from.getLightOpacity(null);
-        translucent = from.isTranslucent(null);
+        try
+        {
+            translucent = (boolean) BLOCK_TRANSLUCENT_FIELD.get(from);
+        }
+        catch (IllegalAccessException e)
+        {
+            e.printStackTrace();
+        }
         lightValue = from.getLightValue(null);
         useNeighborBrightness = from.getUseNeighborBrightness(null);
         blockHardness = from.getBlockHardness(null, null, null);
