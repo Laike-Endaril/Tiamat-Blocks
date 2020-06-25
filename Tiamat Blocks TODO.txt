@@ -1,3 +1,8 @@
+Block types with superclasses of...
+...BlockHorizontal
+...BlockDirectional
+
+
 Output data...
 ...Tiamat block names
 ...Material names
