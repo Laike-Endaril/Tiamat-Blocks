@@ -1,0 +1,19 @@
+{
+    "forge_marker": 1,
+    "defaults": {
+        "textures": {
+            "front": "FRONT",
+            "top": "TOP",
+            "side": "SIDE"
+        },
+        "model": "orientable",
+        "uvlock": true
+    },
+    "variants": {
+        "inventory": [{}],
+        "facing=north": [{}],
+        "facing=south": {"y": 180},
+        "facing=west": {"y": 270},
+        "facing=east": {"y": 90}
+    }
+}

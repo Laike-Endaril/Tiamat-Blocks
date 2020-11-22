@@ -45,7 +45,7 @@ public class BlockCustomStairs extends BlockStairs implements ICustomBlock
         lightValue = from.getLightValue(null);
         useNeighborBrightness = from.getUseNeighborBrightness(null);
         blockHardness = from.getBlockHardness(null, null, null);
-        blockResistance = from.getExplosionResistance(null) * 5; //Because the output form the method is divided by 5 compared to the internal value
+        blockResistance = from.getExplosionResistance(null) * 5; //Because the output from the method is divided by 5 compared to the internal value
         enableStats = from.getEnableStats();
         needsRandomTick = from.getTickRandomly();
         setSoundType(from.getSoundType());

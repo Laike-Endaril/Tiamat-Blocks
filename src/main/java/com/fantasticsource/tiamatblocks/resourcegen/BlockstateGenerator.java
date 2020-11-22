@@ -25,7 +25,8 @@ public class BlockstateGenerator
                     "pillar",
                     "top",
                     "bottom_top",
-                    "directional"
+                    "directional",
+                    "horizontal"
             };
 
     public static void generate(CustomBlockLoader block, IForgeRegistry<Block> registry)
@@ -35,7 +36,12 @@ public class BlockstateGenerator
 
     protected static void generate(CustomBlockLoader block, CustomBlockLoader.BlockData data, IForgeRegistry<Block> registry)
     {
-        if (!Tools.contains(VALID_DATA_TYPES, data.type)) return;
+        if (!Tools.contains(VALID_DATA_TYPES, data.type))
+        {
+            System.err.println(TextFormatting.RED + "Unknown data type: " + data.type);
+            System.err.println(TextFormatting.RED + "For custom block: " + data.name);
+            return;
+        }
 
 
         BufferedReader reader = MCTools.getJarResourceReader(TiamatBlocks.class, INTERNAL_PATH + data.type + ".json");
@@ -100,6 +106,10 @@ public class BlockstateGenerator
 
             case "directional":
                 registry.register(new BlockCustomDirectional(block, data.name, data.cullNeighbors).copyProperties(block));
+                break;
+
+            case "horizontal":
+                registry.register(new BlockCustomHorizontal(block, data.name, data.cullNeighbors).copyProperties(block));
                 break;
 
             default:

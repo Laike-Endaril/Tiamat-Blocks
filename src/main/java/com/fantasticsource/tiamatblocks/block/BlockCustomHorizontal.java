@@ -1,6 +1,6 @@
 package com.fantasticsource.tiamatblocks.block;
 
-import net.minecraft.block.BlockDirectional;
+import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
@@ -12,12 +12,12 @@ import net.minecraft.world.World;
 
 import static com.fantasticsource.tiamatblocks.TiamatBlocks.MODID;
 
-public class BlockCustomDirectional extends BlockDirectional implements ICustomBlock
+public class BlockCustomHorizontal extends BlockHorizontal implements ICustomBlock
 {
     public final String shortName;
     public final boolean cullNeighbors;
 
-    public BlockCustomDirectional(CustomBlockLoader block, String name, boolean cullNeighbors)
+    public BlockCustomHorizontal(CustomBlockLoader block, String name, boolean cullNeighbors)
     {
         super(block.getDefaultState().getMaterial());
 
@@ -37,7 +37,7 @@ public class BlockCustomDirectional extends BlockDirectional implements ICustomB
 
 
     @Override
-    public BlockCustomDirectional copyProperties(CustomBlockLoader from)
+    public BlockCustomHorizontal copyProperties(CustomBlockLoader from)
     {
         fullBlock = from.isFullBlock(null);
         lightOpacity = from.getLightOpacity(null);
@@ -84,18 +84,18 @@ public class BlockCustomDirectional extends BlockDirectional implements ICustomB
     @Override
     public IBlockState getStateForPlacement(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer)
     {
-        return getDefaultState().withProperty(FACING, EnumFacing.getDirectionFromEntityLiving(pos, placer).getOpposite());
+        return getDefaultState().withProperty(FACING, placer.getHorizontalFacing().getOpposite());
     }
 
     @Override
     public int getMetaFromState(IBlockState state)
     {
-        return state.getValue(FACING).getIndex();
+        return state.getValue(FACING).getHorizontalIndex();
     }
 
     @Override
     public IBlockState getStateFromMeta(int meta)
     {
-        return getDefaultState().withProperty(FACING, EnumFacing.getFront(meta & 7));
+        return getDefaultState().withProperty(FACING, EnumFacing.getHorizontal(meta));
     }
 }
