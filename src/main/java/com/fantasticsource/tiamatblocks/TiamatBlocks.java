@@ -18,7 +18,7 @@ public class TiamatBlocks
 {
     public static final String MODID = "tiamatblocks";
     public static final String NAME = "Tiamat Blocks";
-    public static final String VERSION = "1.12.2.000b";
+    public static final String VERSION = "1.12.2.000c";
 
     @Mod.EventHandler
     public static void prePreInit(FMLConstructionEvent event)
