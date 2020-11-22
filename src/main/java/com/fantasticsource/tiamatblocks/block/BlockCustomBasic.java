@@ -8,11 +8,11 @@ import java.lang.reflect.Field;
 
 import static com.fantasticsource.tiamatblocks.TiamatBlocks.MODID;
 
-public class BlockCustomBasic extends Block
+public class BlockCustomBasic extends Block implements ICustomBlock
 {
     public static final Field BLOCK_TRANSLUCENT_FIELD = ReflectionTool.getField(Block.class, "field_149785_s", "translucent");
-    final String shortName;
-    protected final boolean cullNeighbors;
+    public final String shortName;
+    public final boolean cullNeighbors;
 
     public BlockCustomBasic(CustomBlockLoader block, String name, boolean cullNeighbors)
     {
@@ -33,6 +33,7 @@ public class BlockCustomBasic extends Block
     }
 
 
+    @Override
     public BlockCustomBasic copyProperties(CustomBlockLoader from)
     {
         fullBlock = from.isFullBlock(null);

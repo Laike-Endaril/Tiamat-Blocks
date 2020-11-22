@@ -1,0 +1,17 @@
+{
+    "forge_marker": 1,
+    "defaults": {
+        "textures": {
+            "end": "END",
+            "side": "SIDE"
+        },
+        "model": "cube_column",
+        "uvlock": true
+    },
+    "variants": {
+        "inventory": [{}],
+        "axis=y": [{}],
+        "axis=z": {"x": 90},
+        "axis=x": {"x": 90, "y": 90}
+    }
+}

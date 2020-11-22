@@ -3,10 +3,12 @@ package com.fantasticsource.tiamatblocks.resourcegen;
 import com.fantasticsource.mctools.MCTools;
 import com.fantasticsource.tiamatblocks.TiamatBlocks;
 import com.fantasticsource.tiamatblocks.block.BlockCustomBasic;
+import com.fantasticsource.tiamatblocks.block.BlockCustomPillar;
 import com.fantasticsource.tiamatblocks.block.BlockCustomStairs;
 import com.fantasticsource.tiamatblocks.block.CustomBlockLoader;
 import com.fantasticsource.tools.Tools;
 import net.minecraft.block.Block;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.registries.IForgeRegistry;
@@ -22,7 +24,8 @@ public class BlockstateGenerator
     protected static final String[] VALID_DATA_TYPES = new String[]
             {
                     "basic",
-                    "stairs"
+                    "stairs",
+                    "pillar"
             };
 
     public static void generate(CustomBlockLoader block, IForgeRegistry<Block> registry)
@@ -88,6 +91,14 @@ public class BlockstateGenerator
             case "stairs":
                 registry.register(new BlockCustomStairs(block, data.name, data.cullNeighbors).copyProperties(block));
                 break;
+
+            case "pillar":
+                registry.register(new BlockCustomPillar(block, data.name, data.cullNeighbors).copyProperties(block));
+                break;
+
+                default:
+                    System.err.println(TextFormatting.RED + "Unknown data type: " + data.type);
+                    System.err.println(TextFormatting.RED + "For custom block: " + data.name);
         }
     }
 }

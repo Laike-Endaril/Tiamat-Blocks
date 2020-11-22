@@ -113,7 +113,7 @@ public class ResourcePackGenerator
 
         if (changed)
         {
-            System.out.println(TextFormatting.LIGHT_PURPLE + "Tiamat Blocks resource was not loaded; addeding it to resource pack list and shutting down (need to start MC one more time)");
+            System.out.println(TextFormatting.LIGHT_PURPLE + "Tiamat Blocks resource was not loaded; adding it to resource pack list and shutting down (need to start MC one more time)");
             FMLCommonHandler.instance().exitJava(0, true);
         }
     }

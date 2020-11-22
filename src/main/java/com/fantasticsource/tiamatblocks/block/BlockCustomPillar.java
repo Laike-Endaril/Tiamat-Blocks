@@ -1,18 +1,18 @@
 package com.fantasticsource.tiamatblocks.block;
 
-import net.minecraft.block.BlockStairs;
+import net.minecraft.block.BlockRotatedPillar;
 import net.minecraft.block.state.IBlockState;
 
 import static com.fantasticsource.tiamatblocks.TiamatBlocks.MODID;
 
-public class BlockCustomStairs extends BlockStairs implements ICustomBlock
+public class BlockCustomPillar extends BlockRotatedPillar implements ICustomBlock
 {
     public final String shortName;
     public final boolean cullNeighbors;
 
-    public BlockCustomStairs(CustomBlockLoader block, String name, boolean cullNeighbors)
+    public BlockCustomPillar(CustomBlockLoader block, String name, boolean cullNeighbors)
     {
-        super(block.getDefaultState());
+        super(block.getDefaultState().getMaterial());
 
         shortName = name;
         this.cullNeighbors = cullNeighbors;
@@ -30,7 +30,7 @@ public class BlockCustomStairs extends BlockStairs implements ICustomBlock
 
 
     @Override
-    public BlockCustomStairs copyProperties(CustomBlockLoader from)
+    public BlockCustomPillar copyProperties(CustomBlockLoader from)
     {
         fullBlock = from.isFullBlock(null);
         lightOpacity = from.getLightOpacity(null);
