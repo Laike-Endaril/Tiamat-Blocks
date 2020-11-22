@@ -16,7 +16,7 @@ public class BlockCustomBasic extends Block implements ICustomBlock
 
     public BlockCustomBasic(CustomBlockLoader block, String name, boolean cullNeighbors)
     {
-        super(block.getMaterial(block.getDefaultState()));
+        super(block.getDefaultState().getMaterial());
 
         shortName = name;
         this.cullNeighbors = cullNeighbors;

@@ -4,7 +4,7 @@ Block types with superclasses of...
 
 
 Output data...
-...Tiamat block names
+...Valid Tiamat block type names (see BlockstateGenerator)
 ...Material names
 ...Sound names
 ...creative tab names

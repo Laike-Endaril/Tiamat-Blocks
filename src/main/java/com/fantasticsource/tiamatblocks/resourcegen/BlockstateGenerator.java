@@ -25,7 +25,9 @@ public class BlockstateGenerator
             {
                     "basic",
                     "stairs",
-                    "pillar"
+                    "pillar",
+                    "top",
+                    "bottom_top"
             };
 
     public static void generate(CustomBlockLoader block, IForgeRegistry<Block> registry)
@@ -85,6 +87,8 @@ public class BlockstateGenerator
         switch (data.type)
         {
             case "basic":
+            case "top":
+            case "bottom_top":
                 registry.register(new BlockCustomBasic(block, data.name, data.cullNeighbors).copyProperties(block));
                 break;
 
@@ -96,9 +100,9 @@ public class BlockstateGenerator
                 registry.register(new BlockCustomPillar(block, data.name, data.cullNeighbors).copyProperties(block));
                 break;
 
-                default:
-                    System.err.println(TextFormatting.RED + "Unknown data type: " + data.type);
-                    System.err.println(TextFormatting.RED + "For custom block: " + data.name);
+            default:
+                System.err.println(TextFormatting.RED + "Unknown data type: " + data.type);
+                System.err.println(TextFormatting.RED + "For custom block: " + data.name);
         }
     }
 }
