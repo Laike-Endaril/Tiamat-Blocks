@@ -9,9 +9,11 @@ import net.minecraftforge.fml.common.FMLCommonHandler;
 import java.io.*;
 import java.util.ArrayList;
 
+import static com.fantasticsource.tiamatblocks.TiamatBlocks.MODID;
+
 public class ResourcePackGenerator
 {
-    protected static final String MAIN_PATH = "assets" + File.separator + "tiamatblocks" + File.separator + "autogen" + File.separator;
+    protected static final String IN_JAR_PATH = "assets/" + MODID + "/autogen/"; //DO NOT USE File.separator FOR JAR REFERENCES
     protected static final String[] FILE_NAMES = new String[]
             {
                     "pack.png",
@@ -40,7 +42,7 @@ public class ResourcePackGenerator
             //Copy file
             try
             {
-                InputStream is = MCTools.getJarResourceStream(TiamatBlocks.class, MAIN_PATH + filename);
+                InputStream is = MCTools.getJarResourceStream(TiamatBlocks.class, IN_JAR_PATH + filename);
                 FileOutputStream os = new FileOutputStream(file);
 
                 byte[] b = new byte[1024];
