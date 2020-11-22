@@ -1,6 +1,5 @@
 Block types with superclasses of...
 ...BlockHorizontal
-...BlockDirectional
 
 
 Output data...

@@ -2,10 +2,7 @@ package com.fantasticsource.tiamatblocks.resourcegen;
 
 import com.fantasticsource.mctools.MCTools;
 import com.fantasticsource.tiamatblocks.TiamatBlocks;
-import com.fantasticsource.tiamatblocks.block.BlockCustomBasic;
-import com.fantasticsource.tiamatblocks.block.BlockCustomPillar;
-import com.fantasticsource.tiamatblocks.block.BlockCustomStairs;
-import com.fantasticsource.tiamatblocks.block.CustomBlockLoader;
+import com.fantasticsource.tiamatblocks.block.*;
 import com.fantasticsource.tools.Tools;
 import net.minecraft.block.Block;
 import net.minecraft.util.text.TextFormatting;
@@ -27,7 +24,8 @@ public class BlockstateGenerator
                     "stairs",
                     "pillar",
                     "top",
-                    "bottom_top"
+                    "bottom_top",
+                    "directional"
             };
 
     public static void generate(CustomBlockLoader block, IForgeRegistry<Block> registry)
@@ -98,6 +96,10 @@ public class BlockstateGenerator
 
             case "pillar":
                 registry.register(new BlockCustomPillar(block, data.name, data.cullNeighbors).copyProperties(block));
+                break;
+
+            case "directional":
+                registry.register(new BlockCustomDirectional(block, data.name, data.cullNeighbors).copyProperties(block));
                 break;
 
             default:

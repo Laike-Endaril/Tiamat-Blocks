@@ -1,0 +1,19 @@
+{
+    "forge_marker": 1,
+    "defaults": {
+        "textures": {
+            "down": "DOWN",
+            "up": "UP",
+            "north": "NORTH",
+            "south": "SOUTH",
+            "east": "EAST",
+            "west": "WEST"
+        },
+        "model": "cube_directional",
+        "uvlock": true
+    },
+    "variants": {
+        "normal": [{}],
+        "inventory": [{}]
+    }
+}
