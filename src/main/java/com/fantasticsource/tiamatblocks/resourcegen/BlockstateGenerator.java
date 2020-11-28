@@ -17,7 +17,7 @@ import static com.fantasticsource.tiamatblocks.TiamatBlocks.MODID;
 
 public class BlockstateGenerator
 {
-    protected static final String INTERNAL_PATH = "assets" + File.separator + MODID + File.separator + "blockstates" + File.separator;
+    protected static final String IN_JAR_PATH = "assets/" + MODID + "/blockstates/", IN_DIR_PATH = "assets" + File.separator + MODID + File.separator + "blockstates" + File.separator;
     protected static final String[] VALID_DATA_TYPES = new String[]
             {
                     "basic",
@@ -44,7 +44,7 @@ public class BlockstateGenerator
         }
 
 
-        BufferedReader reader = MCTools.getJarResourceReader(TiamatBlocks.class, INTERNAL_PATH + data.type + ".json");
+        BufferedReader reader = MCTools.getJarResourceReader(TiamatBlocks.class, IN_JAR_PATH + data.type + ".json");
         StringBuilder builder = new StringBuilder();
         try
         {
@@ -70,7 +70,7 @@ public class BlockstateGenerator
 
         if (FMLCommonHandler.instance().getEffectiveSide() == Side.CLIENT)
         {
-            File file = new File(MCTools.getResourcePackDir() + "Tiamat Blocks" + File.separator + INTERNAL_PATH + data.name + ".json");
+            File file = new File(MCTools.getResourcePackDir() + "Tiamat Blocks" + File.separator + IN_DIR_PATH + data.name + ".json");
             file.mkdirs();
             file.delete();
             try
