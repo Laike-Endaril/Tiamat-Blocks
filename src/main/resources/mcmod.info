@@ -5,12 +5,7 @@
   "description": "Add custom blocks to the game",
   "version": "${version}",
   "mcversion": "${mcversion}",
-  "url": "",
-  "updateUrl": "",
   "authorList": ["Laike_Endaril"],
-  "credits": "",
-  "logoFile": "",
-  "screenshots": [],
-  "dependencies": []
+  "credits": "\nLordPhrozen (art)"
 }
 ]
