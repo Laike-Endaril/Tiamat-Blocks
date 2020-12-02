@@ -4,12 +4,14 @@ import com.fantasticsource.mctools.MCTools;
 import com.fantasticsource.tiamatblocks.TiamatBlocks;
 import com.fantasticsource.tools.Tools;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.settings.GameSettings;
-import net.minecraft.util.text.TextFormatting;
-import net.minecraftforge.fml.common.FMLCommonHandler;
+import net.minecraft.client.resources.ResourcePackRepository;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.List;
 
 import static com.fantasticsource.tiamatblocks.TiamatBlocks.MODID;
 import static com.fantasticsource.tiamatblocks.TiamatBlocks.NAME;
@@ -66,61 +68,25 @@ public class ResourcePackGenerator
 
 
         //Set resource pack as active
-        GameSettings gameSettings = Minecraft.getMinecraft().gameSettings;
-        for (String s : gameSettings.resourcePacks) System.out.println(TextFormatting.AQUA + s);
-        //Check options.txt; if listed resource packs don't include the mod, add and restart MC
-        boolean changed = false;
-        File file = new File(MCTools.getConfigDir() + ".." + File.separator + "options.txt");
-        ArrayList<String> lines = new ArrayList<>();
-
-        //Read
-        try
+        Minecraft mc = Minecraft.getMinecraft();
+        if (!mc.gameSettings.resourcePacks.contains(NAME))
         {
-            BufferedReader br = new BufferedReader(new FileReader(file));
+            mc.getResourcePackRepository().updateRepositoryEntriesAll();
 
-            String line = br.readLine();
-            while (line != null)
+            List<ResourcePackRepository.Entry> list = new ArrayList<>(mc.getResourcePackRepository().getRepositoryEntries());
+            for (ResourcePackRepository.Entry entry : mc.getResourcePackRepository().getRepositoryEntriesAll())
             {
-                lines.add(line);
-                line = br.readLine();
-            }
-
-            br.close();
-        }
-        catch (IOException e)
-        {
-            e.printStackTrace();
-        }
-
-        //Write
-        try
-        {
-            BufferedWriter bw = new BufferedWriter(new FileWriter(file));
-
-            for (String line : lines)
-            {
-                if (line.contains("resourcePacks") && !line.contains(NAME))
+                if (NAME.equals(entry.getResourcePackName()))
                 {
-                    int start = line.indexOf('[') + 1, end = line.indexOf(']');
-
-                    line = line.substring(0, start) + '"' + NAME + '"' + (line.substring(start, end).trim().equals("") ? "" : ",") + line.substring(start);
-                    changed = true;
+                    list.add(entry);
+                    break;
                 }
-
-                bw.write(line + "\r\n");
             }
+            mc.getResourcePackRepository().setRepositories(list);
 
-            bw.close();
-        }
-        catch (IOException e)
-        {
-            e.printStackTrace();
-        }
-
-        if (changed)
-        {
-            System.out.println(TextFormatting.LIGHT_PURPLE + NAME + " resource was not loaded; adding it to resource pack list and shutting down (need to start MC one more time)");
-            FMLCommonHandler.instance().exitJava(0, true);
+            mc.gameSettings.resourcePacks.add(NAME);
+            mc.gameSettings.saveOptions();
+            mc.refreshResources();
         }
     }
 }
