@@ -14,6 +14,7 @@ import java.io.*;
 import java.util.Map;
 
 import static com.fantasticsource.tiamatblocks.TiamatBlocks.MODID;
+import static com.fantasticsource.tiamatblocks.TiamatBlocks.NAME;
 
 public class BlockstateGenerator
 {
@@ -70,7 +71,7 @@ public class BlockstateGenerator
 
         if (FMLCommonHandler.instance().getEffectiveSide() == Side.CLIENT)
         {
-            File file = new File(MCTools.getResourcePackDir() + "Tiamat Blocks" + File.separator + IN_DIR_PATH + data.name + ".json");
+            File file = new File(MCTools.getResourcePackDir() + NAME + File.separator + IN_DIR_PATH + data.name + ".json");
             file.mkdirs();
             file.delete();
             try

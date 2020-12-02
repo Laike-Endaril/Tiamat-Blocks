@@ -3,6 +3,8 @@ package com.fantasticsource.tiamatblocks.resourcegen;
 import com.fantasticsource.mctools.MCTools;
 import com.fantasticsource.tiamatblocks.TiamatBlocks;
 import com.fantasticsource.tools.Tools;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.settings.GameSettings;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 
@@ -10,6 +12,7 @@ import java.io.*;
 import java.util.ArrayList;
 
 import static com.fantasticsource.tiamatblocks.TiamatBlocks.MODID;
+import static com.fantasticsource.tiamatblocks.TiamatBlocks.NAME;
 
 public class ResourcePackGenerator
 {
@@ -24,7 +27,7 @@ public class ResourcePackGenerator
     public static void init()
     {
         //Copy files
-        File root = new File(MCTools.getResourcePackDir() + "Tiamat Blocks");
+        File root = new File(MCTools.getResourcePackDir() + NAME);
         while (root.exists()) Tools.deleteFilesRecursively(root);
         root.mkdirs();
 
@@ -63,7 +66,8 @@ public class ResourcePackGenerator
 
 
         //Set resource pack as active
-
+        GameSettings gameSettings = Minecraft.getMinecraft().gameSettings;
+        for (String s : gameSettings.resourcePacks) System.out.println(TextFormatting.AQUA + s);
         //Check options.txt; if listed resource packs don't include the mod, add and restart MC
         boolean changed = false;
         File file = new File(MCTools.getConfigDir() + ".." + File.separator + "options.txt");
@@ -95,11 +99,11 @@ public class ResourcePackGenerator
 
             for (String line : lines)
             {
-                if (line.contains("resourcePacks") && !line.contains("Tiamat Blocks"))
+                if (line.contains("resourcePacks") && !line.contains(NAME))
                 {
                     int start = line.indexOf('[') + 1, end = line.indexOf(']');
 
-                    line = line.substring(0, start) + '"' + "Tiamat Blocks" + '"' + (line.substring(start, end).trim().equals("") ? "" : ",") + line.substring(start);
+                    line = line.substring(0, start) + '"' + NAME + '"' + (line.substring(start, end).trim().equals("") ? "" : ",") + line.substring(start);
                     changed = true;
                 }
 
@@ -115,7 +119,7 @@ public class ResourcePackGenerator
 
         if (changed)
         {
-            System.out.println(TextFormatting.LIGHT_PURPLE + "Tiamat Blocks resource was not loaded; adding it to resource pack list and shutting down (need to start MC one more time)");
+            System.out.println(TextFormatting.LIGHT_PURPLE + NAME + " resource was not loaded; adding it to resource pack list and shutting down (need to start MC one more time)");
             FMLCommonHandler.instance().exitJava(0, true);
         }
     }
