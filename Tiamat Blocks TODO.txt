@@ -1,5 +1,5 @@
 Output data...
-...Valid Tiamat block type names (see BlockstateGenerator)
 ...Material names
 ...Sound names
+...Valid Tiamat block type names (see BlockstateGenerator)
 ...creative tab names
