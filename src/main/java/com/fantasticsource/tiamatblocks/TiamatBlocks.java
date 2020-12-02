@@ -13,12 +13,12 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 
-@Mod(modid = TiamatBlocks.MODID, name = TiamatBlocks.NAME, version = TiamatBlocks.VERSION, dependencies = "required-after:fantasticlib@[1.12.2.034a,)")
+@Mod(modid = TiamatBlocks.MODID, name = TiamatBlocks.NAME, version = TiamatBlocks.VERSION, dependencies = "required-after:fantasticlib@[1.12.2.043,)")
 public class TiamatBlocks
 {
     public static final String MODID = "tiamatblocks";
     public static final String NAME = "Tiamat Blocks";
-    public static final String VERSION = "1.12.2.000e";
+    public static final String VERSION = "1.12.2.001";
 
     @Mod.EventHandler
     public static void prePreInit(FMLConstructionEvent event)
