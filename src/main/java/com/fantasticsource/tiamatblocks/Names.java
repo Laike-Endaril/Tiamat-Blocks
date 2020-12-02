@@ -15,6 +15,8 @@ public class Names
         MATERIALS.put("AIR", Material.AIR);
         MATERIALS.put("GRASS", Material.GRASS);
         MATERIALS.put("GROUND", Material.GROUND);
+        MATERIALS.put("DIRT", Material.GROUND);
+        MATERIALS.put("SOIL", Material.GROUND);
         MATERIALS.put("WOOD", Material.WOOD);
         MATERIALS.put("ROCK", Material.ROCK);
         MATERIALS.put("STONE", Material.ROCK);
@@ -52,6 +54,8 @@ public class Names
 
         SOUND_TYPES.put("WOOD", SoundType.WOOD);
         SOUND_TYPES.put("GROUND", SoundType.GROUND);
+        SOUND_TYPES.put("DIRT", SoundType.GROUND);
+        SOUND_TYPES.put("SOIL", SoundType.GROUND);
         SOUND_TYPES.put("PLANT", SoundType.PLANT);
         SOUND_TYPES.put("STONE", SoundType.STONE);
         SOUND_TYPES.put("ROCK", SoundType.STONE);
